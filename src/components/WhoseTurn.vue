@@ -7,6 +7,6 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "WhoseTurn",
-  setup() {},
+  // setup() {},
 });
 </script>

@@ -10,6 +10,8 @@ import { defineComponent } from "vue";
 import TheBoardGame from "./components/TheBoardGame.vue";
 import WhoseTurn from "./components/WhoseTurn.vue";
 
+import "@/styles/globalStyles.css";
+
 export default defineComponent({
   name: "App",
   components: {
