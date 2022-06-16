@@ -28,11 +28,18 @@ body {
 }
 
 .field {
+  display: flex;
   flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+
   width: 33%;
   height: 100px;
   box-sizing: border-box;
   border: 1px solid #ffffff;
+
+  font-size: 30px;
+  font-weight: 900;
 }
 
 .cursorPointer {

@@ -1,5 +1,5 @@
 <template>
-  <div @click="selectField">
+  <div @click="selectField($event.target)">
     <span v-show="char">
       {{ char === "circle" ? "O" : "X" }}
     </span>
@@ -19,9 +19,12 @@ export default defineComponent({
     const { getCharState } = toRefs(useMainStore());
     const { changeCharState } = useMainStore();
 
-    function selectField(): void {
+    function selectField(element: HTMLElement): void {
       if (char.value === "") {
         char.value = getCharState.value;
+
+        element.classList.remove("cursorPointer");
+
         changeCharState(getCharState.value === "circle" ? "cross" : "circle");
       }
     }
