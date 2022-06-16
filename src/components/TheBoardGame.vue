@@ -1,5 +1,7 @@
 <template>
-  <div><field></field></div>
+  <div class="boardGame">
+    <field class="field" v-for="field in 9" :key="field" />
+  </div>
 </template>
 
 <script lang="ts">

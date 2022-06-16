@@ -4,3 +4,33 @@ body {
   background: #000000;
   color: #ffffff;
 }
+
+#app {
+  animation: show 2s forwards;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.boardGame {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.field {
+  flex-grow: 1;
+  width: 33%;
+  height: 100px;
+  box-sizing: border-box;
+  border: 1px solid #ffffff;
+}
