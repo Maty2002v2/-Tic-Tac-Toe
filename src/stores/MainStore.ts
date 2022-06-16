@@ -8,7 +8,7 @@ export const useMainStore = defineStore("Main", {
     };
   },
   getters: {
-    getCharState: (state) => state.charState,
+    getCharState: (state): CharType => state.charState,
   },
   actions: {
     changeCharState(value: CharType) {
