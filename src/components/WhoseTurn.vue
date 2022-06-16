@@ -1,12 +1,19 @@
 <template>
-  <div>Zaczyna: X</div>
+  <div>
+    <h1>Currently: {{ getCharState }}</h1>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, toRefs } from "vue";
+import { useMainStore } from "../stores/MainStore";
 
 export default defineComponent({
   name: "WhoseTurn",
-  // setup() {},
+  setup() {
+    const { getCharState } = toRefs(useMainStore());
+
+    return { getCharState };
+  },
 });
 </script>
