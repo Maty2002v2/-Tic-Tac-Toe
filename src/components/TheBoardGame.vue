@@ -1,6 +1,6 @@
 <template>
   <div class="boardGame">
-    <field class="field" v-for="field in 9" :key="field" />
+    <field class="field cursorPointer" v-for="field in 9" :key="field" />
   </div>
 </template>
 
