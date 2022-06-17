@@ -25,10 +25,17 @@ export const useGlobalWatchs = defineStore("GlobalWatchs", () => {
 
       if (willItWin(circles, getCombinationsWon.value)) {
         console.log("Wygrywa kóko");
+        return;
       }
 
       if (willItWin(crosses, getCombinationsWon.value)) {
         console.log("Wygrywa krzyzyk");
+        return;
+      }
+
+      if (concatArrays.filter((el) => el).length === 9) {
+        console.log("remis");
+        return;
       }
 
       function giveOnlyIndexesSelectedCharacter(
