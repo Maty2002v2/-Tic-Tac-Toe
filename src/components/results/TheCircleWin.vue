@@ -1,6 +1,7 @@
 <template>
   <div class="circleWin">
     <span></span><span></span><span></span><span></span>
+    <div><p class="resultTitle">Win</p></div>
   </div>
 </template>
 

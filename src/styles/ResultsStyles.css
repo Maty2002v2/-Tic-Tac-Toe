@@ -26,3 +26,10 @@
 
   animation: showResult 2s forwards;
 }
+
+.resultTitle {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

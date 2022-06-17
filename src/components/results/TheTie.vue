@@ -1,6 +1,7 @@
 <template>
   <div class="tie">
-    <span>Remis</span><span><span></span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+    <div><p class="resultTitle">Tie</p></div>
   </div>
 </template>
 
@@ -40,37 +41,22 @@ export default defineComponent({
 }
 
 .tie span:nth-child(1) {
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.tie span:nth-child(2) {
   top: 32%;
   left: 50%;
-  width: 190px;
-  height: 190px;
+  width: 180px;
+  height: 180px;
+  border: 10px solid #ffffff;
   border-radius: 50%;
+  box-sizing: border-box;
 
-  background: white;
+  background: transparent;
 
   transform: translate(-50%, -50%);
 
   animation: moveToLeft 5s ease forwards 0.2s;
 }
 
-.tie span:nth-child(2) span {
-  top: 50%;
-  left: 50%;
-  width: 165px;
-  height: 165px;
-  border-radius: 50%;
-
-  background: black;
-
-  transform: translate(-50%, -50%);
-}
-.tie span:nth-child(3) {
+.tie span:nth-child(2) {
   top: 32%;
   left: 50%;
   width: 190px;
@@ -85,7 +71,7 @@ export default defineComponent({
   animation: moveToRight 5s ease forwards 0.2s;
 }
 
-.tie span:nth-child(4) {
+.tie span:nth-child(3) {
   top: 32%;
   left: 50%;
   width: 190px;

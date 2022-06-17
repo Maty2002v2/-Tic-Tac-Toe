@@ -1,5 +1,8 @@
 <template>
-  <div class="crossWin"><span></span></div>
+  <div class="crossWin">
+    <span></span>
+    <div><p class="resultTitle">Win</p></div>
+  </div>
 </template>
 
 <script lang="ts">
