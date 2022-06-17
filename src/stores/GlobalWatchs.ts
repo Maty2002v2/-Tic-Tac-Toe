@@ -8,6 +8,7 @@ export const useGlobalWatchs = defineStore("GlobalWatchs", () => {
   const { getCombinationsWon, getPlayerMovements } = storeToRefs(
     useResaltsStore()
   );
+  const { setResult } = useResaltsStore();
 
   watch(
     getPlayerMovements,
@@ -24,17 +25,17 @@ export const useGlobalWatchs = defineStore("GlobalWatchs", () => {
       crosses = giveOnlyIndexesSelectedCharacter("cross", concatArrays);
 
       if (willItWin(circles, getCombinationsWon.value)) {
-        console.log("Wygrywa kóko");
+        setResult("circle");
         return;
       }
 
       if (willItWin(crosses, getCombinationsWon.value)) {
-        console.log("Wygrywa krzyzyk");
+        setResult("cross");
         return;
       }
 
       if (concatArrays.filter((el) => el).length === 9) {
-        console.log("remis");
+        setResult("tie");
         return;
       }
 

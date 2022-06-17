@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import CharType from "../types/CharType";
+import ResultType from "../types/ResultType";
 
 export const useResaltsStore = defineStore("Resalts", {
   state: () => {
@@ -19,16 +20,20 @@ export const useResaltsStore = defineStore("Resalts", {
         [1, 5, 9],
         [3, 5, 7],
       ] as number[][],
+      result: "" as ResultType,
     };
   },
   getters: {
     getPlayerMovements: (state): CharType[][] => state.playerMovements,
     getCombinationsWon: (state): number[][] => state.combinationsWon,
-    // getResults() {},
+    getResult: (state): ResultType => state.result,
   },
   actions: {
     makeMove(value: CharType, row: number, column: number) {
       this.playerMovements[row][column] = value;
+    },
+    setResult(value: ResultType) {
+      this.result = value;
     },
   },
 });
