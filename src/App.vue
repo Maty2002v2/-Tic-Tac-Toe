@@ -6,9 +6,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, toRefs } from "vue";
 import TheBoardGame from "./components/TheBoardGame.vue";
 import WhoseTurn from "./components/WhoseTurn.vue";
+
+import { useGlobalWatchs } from "./stores/GlobalWatchs";
 
 import "@/styles/globalStyles.css";
 
@@ -17,6 +19,9 @@ export default defineComponent({
   components: {
     TheBoardGame,
     WhoseTurn,
+  },
+  setup() {
+    useGlobalWatchs();
   },
 });
 </script>

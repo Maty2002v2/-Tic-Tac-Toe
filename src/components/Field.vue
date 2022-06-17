@@ -9,6 +9,7 @@
 <script lang="ts">
 import { defineComponent, ref, toRefs } from "vue";
 import { useMainStore } from "../stores/MainStore";
+import { useResaltsStore } from "../stores/ResaltsStore";
 import CharType from "../types/CharType";
 
 export default defineComponent({
@@ -19,13 +20,21 @@ export default defineComponent({
     const { getCharState } = toRefs(useMainStore());
     const { changeCharState } = useMainStore();
 
+    const { makeMove } = useResaltsStore();
+
     function selectField(element: HTMLElement): void {
       if (char.value === "") {
         char.value = getCharState.value;
 
-        element.classList.remove("cursorPointer");
+        makeMove(
+          char.value,
+          parseInt(element.dataset.row!) - 1,
+          parseInt(element.dataset.column!) - 1
+        );
 
         changeCharState(getCharState.value === "circle" ? "cross" : "circle");
+
+        element.classList.remove("cursorPointer");
       }
     }
 

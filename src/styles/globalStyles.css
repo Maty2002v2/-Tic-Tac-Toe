@@ -6,7 +6,7 @@ body {
 }
 
 #app {
-  animation: show 2s forwards;
+  animation: show 1s forwards;
 }
 
 @keyframes show {
