@@ -1,5 +1,7 @@
 <template>
-  <div class="circleWin"><span></span></div>
+  <div class="circleWin">
+    <span></span><span></span><span></span><span></span>
+  </div>
 </template>
 
 <script lang="ts">
@@ -22,63 +24,81 @@ export default defineComponent({
   font-size: 50px;
   overflow: hidden;
   margin: 0 auto;
+  animation: endO 2s forwards;
 }
 
-.circleWin {
-  animation: show 3s forwards;
-}
-
-@keyframes show {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.circleWin::before,
-.circleWin::after {
-  content: "";
+.circleWin span:nth-child(1) {
   position: absolute;
-  width: 100%;
-  height: 5px;
-  background: white;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 190px;
+  height: 5px;
+  background: white;
+  animation: ObrKrzy1 3s ease forwards;
 }
-
-.circleWin::before {
-  animation: moveBefore 1.5s forwards;
-}
-@keyframes moveBefore {
+@keyframes ObrKrzy1 {
   0% {
-    transform-origin: left;
-    transform: rotate(-45deg) translate(50%, -100%);
-    opacity: 0;
-  }
-  100% {
-    transform-origin: left;
-    transform: rotate(-45deg) translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotate(-45deg);
     opacity: 1;
   }
+  100% {
+    transform: translate(-50%, -50%) rotate(3555deg);
+    opacity: 0;
+  }
 }
 
-.circleWin::after {
-  transform-origin: left;
-  transform: rotate(45deg) translate(-50%, -50%);
-  animation: moveAfter 1.5s forwards;
+.circleWin span:nth-child(2) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 190px;
+  height: 5px;
+  background: white;
+  animation: ObrKrzy2 3s ease forwards;
 }
-
-@keyframes moveAfter {
+@keyframes ObrKrzy2 {
   0% {
-    transform-origin: left;
-    transform: rotate(45deg) translate(50%, 100%);
+    transform: translate(-50%, -50%) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(3645deg);
+    opacity: 0;
+  }
+}
+
+.circleWin span:nth-child(3) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 190px;
+  height: 190px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: ObrKrzy3 3s ease-in forwards;
+}
+.circleWin span:nth-child(4) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 165px;
+  height: 165px;
+  background: black;
+  border-radius: 50%;
+  opacity: 0;
+  z-index: 100;
+  animation: ObrKrzy3 3s ease-in forwards;
+}
+@keyframes ObrKrzy3 {
+  0% {
     opacity: 0;
   }
   100% {
-    transform-origin: left;
-    transform: rotate(45deg) translate(-50%, -50%);
     opacity: 1;
   }
 }
