@@ -14,7 +14,8 @@ import TheResult from "./components/results/TheResult.vue";
 
 import { useGlobalWatchs } from "./stores/GlobalWatchs";
 
-import "@/styles/globalStyles.css";
+import "@/styles/GlobalStyles.css";
+import "@/styles/ResultsStyles.css";
 
 export default defineComponent({
   name: "App",

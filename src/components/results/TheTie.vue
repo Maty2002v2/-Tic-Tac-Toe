@@ -13,80 +13,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.tie {
-  width: 400px;
-  z-index: -2;
-  animation: EndRemis 2s forwards;
-  position: relative;
-  width: 200px;
-  height: 300px;
-  font-size: 100px;
-  text-align: center;
-  color: white;
-  background: black;
-  font-size: 50px;
-  overflow: hidden;
-  margin: 0 auto;
-}
-@keyframes EndRemis {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.tie span:nth-child(1) {
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.tie span:nth-child(2) {
-  position: absolute;
-  top: 32%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 190px;
-  height: 190px;
-  border-radius: 50%;
-  background: white;
-  animation: EndRemis1 5s ease forwards 0.2s;
-}
-@keyframes EndRemis1 {
-  0% {
-    left: 50%;
-  }
-  100% {
-    left: 27%;
-  }
-}
-
-.tie span:nth-child(2) span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 165px;
-  height: 165px;
-  background: black;
-  border-radius: 50%;
-}
-.tie span:nth-child(3) {
-  position: absolute;
-  top: 32%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
-  width: 190px;
-  height: 8px;
-  background: white;
-  border-radius: 5px;
-  z-index: -1;
-  animation: EndRemis2 5s ease forwards 0.2s;
-}
-@keyframes EndRemis2 {
+@keyframes moveToRight {
   0% {
     left: 50%;
   }
@@ -95,16 +22,81 @@ export default defineComponent({
   }
 }
 
-.tie span:nth-child(4) {
+@keyframes moveToLeft {
+  0% {
+    left: 50%;
+  }
+  100% {
+    left: 27%;
+  }
+}
+
+.tie {
+  width: 400px;
+}
+
+.tie span {
   position: absolute;
+}
+
+.tie span:nth-child(1) {
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tie span:nth-child(2) {
   top: 32%;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+
+  background: white;
+
+  transform: translate(-50%, -50%);
+
+  animation: moveToLeft 5s ease forwards 0.2s;
+}
+
+.tie span:nth-child(2) span {
+  top: 50%;
+  left: 50%;
+  width: 165px;
+  height: 165px;
+  border-radius: 50%;
+
+  background: black;
+
+  transform: translate(-50%, -50%);
+}
+.tie span:nth-child(3) {
+  top: 32%;
+  left: 50%;
   width: 190px;
   height: 8px;
-  background: white;
   border-radius: 5px;
+
+  background: white;
+
   z-index: -1;
-  animation: EndRemis2 5s ease forwards 0.2s;
+  transform: translate(-50%, -50%) rotate(45deg);
+
+  animation: moveToRight 5s ease forwards 0.2s;
+}
+
+.tie span:nth-child(4) {
+  top: 32%;
+  left: 50%;
+  width: 190px;
+  height: 8px;
+  border-radius: 5px;
+
+  background: white;
+
+  z-index: -1;
+  transform: translate(-50%, -50%) rotate(-45deg);
+
+  animation: moveToRight 5s ease forwards 0.2s;
 }
 </style>

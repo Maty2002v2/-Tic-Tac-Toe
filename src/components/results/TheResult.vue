@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="result">
     <the-circle-win></the-circle-win>
     <the-cross-win></the-cross-win>
     <the-tie></the-tie>
@@ -17,3 +17,5 @@ export default defineComponent({
   name: "TheResult",
 });
 </script>
+
+<style scoped></style>
