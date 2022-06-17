@@ -2,6 +2,7 @@
   <div>
     <whose-turn />
     <the-board-game />
+    <the-result></the-result>
   </div>
 </template>
 
@@ -9,6 +10,7 @@
 import { defineComponent, toRefs } from "vue";
 import TheBoardGame from "./components/TheBoardGame.vue";
 import WhoseTurn from "./components/WhoseTurn.vue";
+import TheResult from "./components/results/TheResult.vue";
 
 import { useGlobalWatchs } from "./stores/GlobalWatchs";
 
@@ -19,6 +21,7 @@ export default defineComponent({
   components: {
     TheBoardGame,
     WhoseTurn,
+    TheResult,
   },
   setup() {
     useGlobalWatchs();
