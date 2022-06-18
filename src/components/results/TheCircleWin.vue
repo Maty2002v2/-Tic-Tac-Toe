@@ -44,35 +44,36 @@ export default defineComponent({
   transform: translate(-50%, -50%);
 }
 
-.circleWin span:nth-child(1) {
+.circleWin span:nth-child(1),
+.circleWin span:nth-child(2),
+.circleWin span:nth-child(3) {
   width: 190px;
   height: 5px;
+}
+
+.circleWin span:nth-child(1) {
   transform: rotate(-45deg);
   animation: SpinFirstSpan 3s ease forwards;
 }
 
 .circleWin span:nth-child(2) {
-  width: 190px;
-  height: 5px;
   transform: rotate(45deg);
   animation: SpinSecendSpan 3s ease forwards;
 }
 
-.circleWin span:nth-child(3) {
-  width: 190px;
-  height: 190px;
+.circleWin span:nth-child(3),
+.circleWin span:nth-child(4) {
   border-radius: 50%;
   opacity: 0;
   animation: showResult 3s ease-in forwards;
 }
+
+.circleWin span:nth-child(3) {
+  height: 190px;
+}
 .circleWin span:nth-child(4) {
   width: 165px;
   height: 165px;
-  border-radius: 50%;
-
   background: black;
-
-  opacity: 0;
-  animation: showResult 3s ease-in forwards;
 }
 </style>

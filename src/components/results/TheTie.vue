@@ -38,11 +38,11 @@ export default defineComponent({
 
 .tie span {
   position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 .tie span:nth-child(1) {
-  top: 32%;
-  left: 50%;
   width: 180px;
   height: 180px;
   border: 10px solid #ffffff;
@@ -56,9 +56,8 @@ export default defineComponent({
   animation: moveToLeft 5s ease forwards 0.2s;
 }
 
-.tie span:nth-child(2) {
-  top: 32%;
-  left: 50%;
+.tie span:nth-child(2),
+.tie span:nth-child(3) {
   width: 190px;
   height: 8px;
   border-radius: 5px;
@@ -66,27 +65,15 @@ export default defineComponent({
   background: white;
 
   z-index: -1;
-  transform: translate(-50%, -50%) rotate(45deg);
 
   animation: moveToRight 5s ease forwards 0.2s;
+}
+
+.tie span:nth-child(2) {
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .tie span:nth-child(3) {
-  top: 32%;
-  left: 50%;
-  width: 190px;
-  height: 8px;
-  border-radius: 5px;
-
-  background: white;
-
-  z-index: -1;
   transform: translate(-50%, -50%) rotate(-45deg);
-
-  animation: moveToRight 5s ease forwards 0.2s;
-}
-
-.resultTitle {
-  top: 60%;
 }
 </style>

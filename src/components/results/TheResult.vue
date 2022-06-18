@@ -8,8 +8,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { storeToRefs } from "pinia";
 
+import { storeToRefs } from "pinia";
 import { useResaltsStore } from "../../stores/ResaltsStore";
 
 import TheCircleWin from "./TheCircleWin.vue";

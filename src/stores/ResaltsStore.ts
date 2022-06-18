@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-
 import { useMainStore } from "./MainStore";
 
 import CharType from "../types/CharType";

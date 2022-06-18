@@ -8,8 +8,8 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { storeToRefs } from "pinia";
 
+import { storeToRefs } from "pinia";
 import { useMainStore } from "../stores/MainStore";
 import { useResaltsStore } from "../stores/ResaltsStore";
 

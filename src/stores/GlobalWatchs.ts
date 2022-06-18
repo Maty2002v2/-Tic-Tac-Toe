@@ -1,5 +1,6 @@
-import { defineStore, storeToRefs } from "pinia";
 import { watch } from "vue";
+
+import { defineStore, storeToRefs } from "pinia";
 import { useResaltsStore } from "@/stores/ResaltsStore";
 
 import CharType from "@/types/CharType";
