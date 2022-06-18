@@ -85,4 +85,8 @@ export default defineComponent({
 
   animation: moveToRight 5s ease forwards 0.2s;
 }
+
+.resultTitle {
+  top: 60%;
+}
 </style>

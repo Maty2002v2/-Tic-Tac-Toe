@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs } from "vue";
+import { defineComponent } from "vue";
 import { storeToRefs } from "pinia";
 
 import TheBoardGame from "./components/TheBoardGame.vue";
