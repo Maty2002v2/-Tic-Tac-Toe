@@ -64,7 +64,7 @@ Aby sklonować i uruchomić tę aplikację, potrzebujesz [Git](https://git-scm.c
 $ git clone https://github.com/Maty2002v2/guess-the-word.git
 
 #Wejdź do folderu repozytorium
-$ cd -tic-tac-toe
+$ cd -Tic-Tac-Toe
 
 #Wejdź do folderu aplikacji
 $ cd tic-tac-toe
