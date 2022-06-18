@@ -1,4 +1,7 @@
 import { defineStore } from "pinia";
+
+import { useMainStore } from "./MainStore";
+
 import CharType from "../types/CharType";
 import ResultType from "../types/ResultType";
 
@@ -33,15 +36,21 @@ export const useResaltsStore = defineStore("Resalts", {
       this.playerMovements[row][column] = value;
     },
     setResult(value: ResultType, winCombination: number[]) {
+      const { changeisfinish } = useMainStore();
+
       if (winCombination.length) {
         const spans = document.querySelectorAll("div.field > span");
 
         winCombination.forEach((spanIndex) =>
           spans[spanIndex - 1].classList.add("winColor")
         );
+
+        changeisfinish(true);
       }
 
       setTimeout(() => (this.result = value), 2000);
+
+      setTimeout(() => window.location.reload(), 5000);
     },
   },
 });

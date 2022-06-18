@@ -7,9 +7,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, toRefs } from "vue";
+import { defineComponent, ref } from "vue";
+import { storeToRefs } from "pinia";
+
 import { useMainStore } from "../stores/MainStore";
 import { useResaltsStore } from "../stores/ResaltsStore";
+
 import CharType from "../types/CharType";
 
 export default defineComponent({
@@ -17,13 +20,13 @@ export default defineComponent({
   setup() {
     let char = ref<CharType>("");
 
-    const { getCharState } = toRefs(useMainStore());
+    const { getCharState, getisfinish } = storeToRefs(useMainStore());
     const { changeCharState } = useMainStore();
 
     const { makeMove } = useResaltsStore();
 
     function selectField(element: HTMLElement): void {
-      if (char.value === "") {
+      if (char.value === "" && !getisfinish.value) {
         char.value = getCharState.value;
 
         makeMove(
