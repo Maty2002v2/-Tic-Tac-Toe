@@ -16,6 +16,7 @@ export const useGlobalWatchs = defineStore("GlobalWatchs", () => {
       let concatArrays: CharType[] = [];
       let circles: number[] = [];
       let crosses: number[] = [];
+      let winCombination: number[] | undefined = [];
 
       getPlayerMovements.value.forEach(
         (array) => (concatArrays = concatArrays.concat(array))
@@ -24,18 +25,18 @@ export const useGlobalWatchs = defineStore("GlobalWatchs", () => {
       circles = giveOnlyIndexesSelectedCharacter("circle", concatArrays);
       crosses = giveOnlyIndexesSelectedCharacter("cross", concatArrays);
 
-      if (willItWin(circles, getCombinationsWon.value)) {
-        setResult("circle");
+      if ((winCombination = willItWin(circles, getCombinationsWon.value))) {
+        setResult("circle", winCombination);
         return;
       }
 
-      if (willItWin(crosses, getCombinationsWon.value)) {
-        setResult("cross");
+      if ((winCombination = willItWin(crosses, getCombinationsWon.value))) {
+        setResult("cross", winCombination);
         return;
       }
 
       if (concatArrays.filter((el) => el).length === 9) {
-        setResult("tie");
+        setResult("tie", []);
         return;
       }
 
@@ -49,8 +50,8 @@ export const useGlobalWatchs = defineStore("GlobalWatchs", () => {
       }
 
       function willItWin(indexesChar: number[], combinationsWon: number[][]) {
-        return combinationsWon.find((el) => {
-          return Array.of(...el).every((e) => indexesChar.includes(e));
+        return combinationsWon.find((combination) => {
+          return Array.of(...combination).every((e) => indexesChar.includes(e));
         });
       }
     },

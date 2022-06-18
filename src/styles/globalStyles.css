@@ -45,3 +45,7 @@ body {
 .cursorPointer {
   cursor: pointer;
 }
+
+.winColor {
+  color: #009900;
+}

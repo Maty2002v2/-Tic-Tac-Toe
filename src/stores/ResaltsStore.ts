@@ -32,8 +32,16 @@ export const useResaltsStore = defineStore("Resalts", {
     makeMove(value: CharType, row: number, column: number) {
       this.playerMovements[row][column] = value;
     },
-    setResult(value: ResultType) {
-      this.result = value;
+    setResult(value: ResultType, winCombination: number[]) {
+      if (winCombination.length) {
+        const spans = document.querySelectorAll("div.field > span");
+
+        winCombination.forEach((spanIndex) =>
+          spans[spanIndex - 1].classList.add("winColor")
+        );
+      }
+
+      setTimeout(() => (this.result = value), 2000);
     },
   },
 });
