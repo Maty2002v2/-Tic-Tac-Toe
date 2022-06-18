@@ -1,6 +1,6 @@
 # tic-tac-toe
 
-> Podgląd na żywo [_tutaj_]().
+> Podgląd na żywo [_tutaj_](https://whimsical-churros-f32b36.netlify.app/).
 
 ## Spis treści
 
