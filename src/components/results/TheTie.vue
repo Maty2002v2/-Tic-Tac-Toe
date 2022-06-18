@@ -33,7 +33,7 @@ export default defineComponent({
 }
 
 .tie {
-  width: 400px;
+  width: 300px;
 }
 
 .tie span {

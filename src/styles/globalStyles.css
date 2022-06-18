@@ -23,8 +23,9 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-  max-width: 900px;
-  margin: 0 auto;
+
+  max-width: 500px;
+  margin: 100px auto 0 auto;
 }
 
 .field {
@@ -36,7 +37,6 @@ body {
   width: 33%;
   height: 100px;
   box-sizing: border-box;
-  border: 1px solid #ffffff;
 
   font-size: 30px;
   font-weight: 900;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Currently: {{ getCharState }}</h1>
+    <h1 class="whoseTurn">Currently: {{ getCharState }}</h1>
   </div>
 </template>
 
@@ -17,3 +17,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.whoseTurn {
+  text-align: center;
+}
+</style>
