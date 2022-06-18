@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!getResult">
+    <div v-if="!getResult" class="container">
       <whose-turn />
       <the-board-game />
     </div>
@@ -38,3 +38,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.container {
+  margin: 0 10px;
+}
+</style>
