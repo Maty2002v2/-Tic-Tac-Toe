@@ -28,7 +28,7 @@ body {
   margin: 100px auto 0 auto;
 }
 
-.field {
+.boardGame__field {
   display: flex;
   flex-grow: 1;
   justify-content: center;
@@ -42,10 +42,10 @@ body {
   font-weight: 900;
 }
 
-.cursorPointer {
+.boardGame__field--cursorPointer {
   cursor: pointer;
 }
 
-.winColor {
+.boardGame__field--winColor {
   color: #009900;
 }

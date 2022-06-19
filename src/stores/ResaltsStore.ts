@@ -35,16 +35,16 @@ export const useResaltsStore = defineStore("Resalts", {
       this.playerMovements[row][column] = value;
     },
     setResult(value: ResultType, winCombination: number[]) {
-      const { changeisfinish } = useMainStore();
+      const { setFinish } = useMainStore();
 
       if (winCombination.length) {
-        const spans = document.querySelectorAll("div.field > span");
+        const spans = document.querySelectorAll("div.boardGame__field > span");
 
         winCombination.forEach((spanIndex) =>
-          spans[spanIndex - 1].classList.add("winColor")
+          spans[spanIndex - 1].classList.add("boardGame__field--winColor")
         );
 
-        changeisfinish(true);
+        setFinish(true);
       }
 
       setTimeout(() => (this.result = value), 2000);

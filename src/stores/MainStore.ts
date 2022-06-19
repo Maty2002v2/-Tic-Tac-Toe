@@ -5,19 +5,19 @@ export const useMainStore = defineStore("Main", {
   state: () => {
     return {
       charState: "circle" as CharType,
-      isfinish: false,
+      finish: false,
     };
   },
   getters: {
     getCharState: (state): CharType => state.charState,
-    getisfinish: (state): boolean => state.isfinish,
+    getFinish: (state): boolean => state.finish,
   },
   actions: {
     changeCharState(value: CharType) {
       this.charState = value;
     },
-    changeisfinish(value: boolean) {
-      this.isfinish = value;
+    setFinish(value: boolean) {
+      this.finish = value;
     },
   },
 });

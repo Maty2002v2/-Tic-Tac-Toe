@@ -20,13 +20,13 @@ export default defineComponent({
   setup() {
     let char = ref<CharType>("");
 
-    const { getCharState, getisfinish } = storeToRefs(useMainStore());
+    const { getCharState, getFinish } = storeToRefs(useMainStore());
     const { changeCharState } = useMainStore();
 
     const { makeMove } = useResaltsStore();
 
     function selectField(element: HTMLElement): void {
-      if (char.value === "" && !getisfinish.value) {
+      if (char.value === "" && !getFinish.value) {
         char.value = getCharState.value;
 
         makeMove(
@@ -37,7 +37,7 @@ export default defineComponent({
 
         changeCharState(getCharState.value === "circle" ? "cross" : "circle");
 
-        element.classList.remove("cursorPointer");
+        element.classList.remove("boardGame__field--cursorPointer");
       }
     }
 
