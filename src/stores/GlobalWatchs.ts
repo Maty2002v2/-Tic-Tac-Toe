@@ -3,6 +3,8 @@ import { watch } from "vue";
 import { defineStore, storeToRefs } from "pinia";
 import { useResaltsStore } from "@/stores/ResaltsStore";
 
+import BotPlayer from "@/utils/classes/BotPlayer";
+
 import CharType from "@/types/CharType";
 
 export const useGlobalWatchs = defineStore("GlobalWatchs", () => {
@@ -22,6 +24,8 @@ export const useGlobalWatchs = defineStore("GlobalWatchs", () => {
       getPlayerMovements.value.forEach(
         (array) => (concatArrays = concatArrays.concat(array))
       );
+      // console.log(getPlayerMovements.value);
+      console.log(new BotPlayer(getPlayerMovements.value, "cross").move());
 
       circles = giveOnlyIndexesSelectedCharacter("circle", concatArrays);
       crosses = giveOnlyIndexesSelectedCharacter("cross", concatArrays);
