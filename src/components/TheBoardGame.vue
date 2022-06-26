@@ -4,6 +4,7 @@
       v-for="(field, index) in fieldData"
       :key="index"
       :class="field.classes"
+      :whetherFieldIsFree="concatArrays[index]"
       :data-row="field.row"
       :data-column="field.column"
     />
@@ -11,9 +12,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from "vue";
+import { defineComponent, reactive, computed } from "vue";
 import Field from "./Field.vue";
 import FieldInterface from "../types/FieldIntercace";
+
+import { useResaltsStore } from "../stores/ResaltsStore";
+import { storeToRefs } from "pinia";
+
+import CharType from "../types/CharType";
 
 export default defineComponent({
   name: "TheBoardGame",
@@ -21,6 +27,8 @@ export default defineComponent({
     Field,
   },
   setup() {
+    const { getPlayerMovements } = storeToRefs(useResaltsStore());
+
     const fieldData: FieldInterface[] = reactive([
       {
         row: 1,
@@ -85,7 +93,17 @@ export default defineComponent({
       },
     ]);
 
-    return { fieldData };
+    const concatArrays = computed(() => {
+      let concatArrays: CharType[] = [];
+
+      getPlayerMovements.value.forEach(
+        (array) => (concatArrays = concatArrays.concat(array))
+      );
+
+      return concatArrays;
+    });
+
+    return { fieldData, concatArrays };
   },
 });
 </script>

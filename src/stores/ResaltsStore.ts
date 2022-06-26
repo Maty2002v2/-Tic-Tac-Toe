@@ -33,6 +33,7 @@ export const useResaltsStore = defineStore("Resalts", {
   actions: {
     makeMove(value: CharType, row: number, column: number) {
       this.playerMovements[row][column] = value;
+      // console.log(this.getPlayerMovements);
     },
     setResult(value: ResultType, winCombination: number[]) {
       const { setFinish } = useMainStore();

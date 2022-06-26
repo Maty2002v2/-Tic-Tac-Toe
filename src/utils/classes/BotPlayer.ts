@@ -21,49 +21,49 @@ class BotPlayer {
     }
   }
 
-  private win(): boolean {
+  private win(): number[] | null {
     // console.log("1. Wygraj - sprawdzam");
     const result = this.winOrBlock(this.board, this.myChar);
     if (!result) {
       console.log("Przechodzę dalej");
-      return false;
+      return null;
     } else {
       console.log(`Wygrywam stawiając kółko na (${result})`);
-      return true;
+      return result;
     }
   }
 
-  private block(): boolean {
+  private block(): number[] | null {
     // console.log("2. Zablokuj - sprawdzam");
     const result = this.winOrBlock(this.board, this.opponentChar);
     if (!result) {
       console.log("Przechodzę dalej");
-      return false;
+      return null;
     } else {
       console.log(`Blokuję stawiając kółko na (${result})`);
-      return true;
+      return result;
     }
   }
 
-  fork() {
+  fork(): number[] | null {
     // console.log("3. Zrób rozgałęzienie - sprawdzam");
     const result = this.checkFork(this.board, this.myChar);
     if (!result) {
       console.log("Przechodzę dalej", result);
-      return false;
+      return null;
     } else {
       console.log(`Robię rozgałęzienie stawiając kółko na (${result})`);
-      return true;
+      return result;
     }
   }
 
-  blockFork(): boolean {
+  blockFork(): number[] | null {
     // console.log("4. Zrób blokujące rozgałęzienie - sprawdzam");
     const result = this.checkFork(this.board, this.opponentChar);
     console.log(result ? "tak" : "nie", result);
     if (!result) {
       console.log("Przechodzę dalej");
-      return false;
+      return null;
     }
     console.log(`Wolny punkt przecięcia na (${result}), sprawdzam dalej`);
     // sprawdźmy czy mozemy zmusić przeciwnika do blokowania
@@ -74,30 +74,30 @@ class BotPlayer {
         twoInARowResult
       );
       //   return twoInARowResult;
-      return true;
+      return result;
     }
     // jezeli nie, to zwracamy miejsce przecięcia aby zablokować przeciwnika
     console.log(
       "Blokuję rozgałęzienie stawiając na punkcie przecięcia",
       result
     );
-    return true;
+    return result;
   }
 
-  private center(): boolean {
+  private center(): number[] | null {
     // console.log("5. Zagraj środek - sprawdzam");
     const result = !this.board[1][1] ? [1, 1] : null;
 
     if (result) {
       console.log("Gram na środku");
-      return true;
+      return [1, 1];
     } else {
       console.log("Przechodzę dalej");
-      return false;
+      return null;
     }
   }
 
-  private oppositeCorner(): boolean {
+  private oppositeCorner(): number[] | null {
     // console.log("6. Zagraj przeciwny narożnik - sprawdzam");
     // sprawdzamy czy na przeciwko zajetego naroznika jest wolny
     let result = null;
@@ -113,14 +113,14 @@ class BotPlayer {
 
     if (result) {
       console.log(`Gram na przeciwnym narożniku (${result})`);
-      return true;
+      return result;
     } else {
       console.log("Przechodzę dalej");
-      return false;
+      return null;
     }
   }
 
-  private emptyCorner(): boolean {
+  private emptyCorner(): number[] | null {
     // console.log("7. Zagraj pusty narożnik - sprawdzam");
     // szukamy pusty naroznik
     let result = null;
@@ -136,14 +136,14 @@ class BotPlayer {
 
     if (result) {
       console.log(`Gram na pustym narożniku (${result})`);
-      return true;
+      return result;
     } else {
       console.log("Przechodzę dalej");
-      return false;
+      return null;
     }
   }
 
-  private emptySide(): boolean {
+  private emptySide(): number[] | null {
     // console.log("8. Zagraj pusty bok - sprawdzam");
     // szukamy pustych bokow
     let result = null;
@@ -161,11 +161,11 @@ class BotPlayer {
 
     if (result) {
       console.log(`Gram pusty bok (${result})`);
-      return true;
+      return result;
     } else {
       // błędna sytuacja, nie powinna się zdarzyć
       console.log("Brak ruchu!");
-      return false;
+      return null;
     }
   }
 
@@ -217,7 +217,7 @@ class BotPlayer {
     }
   }
 
-  checkFork(board: CharType[][], char: CharType) {
+  checkFork(board: CharType[][], char: CharType): number[] | null {
     // rozgalezienie i rozgalezienie blokujace rowniez opieraja sie na tej samej logice, wiec uwspolniamy
 
     // dzięki temu zbiorowi, nie będziemy sprawdzać kilkakrotnie tych samych miejsc
@@ -274,22 +274,22 @@ class BotPlayer {
       if (!rowInvalid) {
         if (isDiag1Valid && !board[i][i]) {
           //   return board[i][i];
-          return [i][i];
+          return [i, i];
         }
         if (isDiag2Valid && !board[i][2 - i]) {
           //   return board[i][2 - i];
-          return [i][2 - i];
+          return [i, 2 - i];
         }
       }
       // sprawdzamy przeciecia kolumny z przekatnymi
       if (!invalidCols.has(i)) {
         if (isDiag1Valid && !board[i][i]) {
           //   return board[i][i];
-          return [i][i];
+          return [i, i];
         }
         if (isDiag2Valid && !board[2 - i][i]) {
           //   return board[2 - i][i];
-          return [2 - i][i];
+          return [2 - i, i];
         }
       }
     }
@@ -374,7 +374,7 @@ class BotPlayer {
     return null;
   }
 
-  public move(): boolean {
+  public move(): number[] | null {
     return (
       this.win() ||
       this.block() ||

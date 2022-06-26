@@ -1,13 +1,13 @@
 <template>
   <div @click="selectField($event.target)">
-    <span v-show="char">
+    <span v-show="whetherFieldIsFree">
       {{ char === "circle" ? "O" : "X" }}
     </span>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, PropType, ref } from "vue";
 
 import { storeToRefs } from "pinia";
 import { useMainStore } from "../stores/MainStore";
@@ -17,16 +17,24 @@ import CharType from "../types/CharType";
 
 export default defineComponent({
   name: "Field",
-  setup() {
+  props: {
+    whetherFieldIsFree: {
+      type: String as PropType<CharType>,
+      default: "",
+      requaierd: true,
+    },
+  },
+  setup(props) {
     let char = ref<CharType>("");
 
     const { getCharState, getFinish } = storeToRefs(useMainStore());
-    const { changeCharState } = useMainStore();
+    // const { changeCharState } = useMainStore();
 
     const { makeMove } = useResaltsStore();
 
     function selectField(element: HTMLElement): void {
-      if (char.value === "" && !getFinish.value) {
+      if (props.whetherFieldIsFree === "" && !getFinish.value) {
+        // console.log(char.value, "----------------------------");
         char.value = getCharState.value;
 
         makeMove(
@@ -35,7 +43,7 @@ export default defineComponent({
           parseInt(element.dataset.column!) - 1
         );
 
-        changeCharState(getCharState.value === "circle" ? "cross" : "circle");
+        // changeCharState(getCharState.value === "circle" ? "cross" : "circle");
 
         element.classList.remove("boardGame__field--cursorPointer");
       }

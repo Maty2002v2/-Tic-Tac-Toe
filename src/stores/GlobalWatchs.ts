@@ -2,16 +2,20 @@ import { watch } from "vue";
 
 import { defineStore, storeToRefs } from "pinia";
 import { useResaltsStore } from "@/stores/ResaltsStore";
+import { useMainStore } from "@/stores/MainStore";
 
 import BotPlayer from "@/utils/classes/BotPlayer";
 
 import CharType from "@/types/CharType";
 
 export const useGlobalWatchs = defineStore("GlobalWatchs", () => {
+  const { getCharState } = storeToRefs(useMainStore());
+  const { changeCharState } = useMainStore();
+
   const { getCombinationsWon, getPlayerMovements } = storeToRefs(
     useResaltsStore()
   );
-  const { setResult } = useResaltsStore();
+  const { makeMove, setResult } = useResaltsStore();
 
   watch(
     getPlayerMovements,
@@ -25,7 +29,19 @@ export const useGlobalWatchs = defineStore("GlobalWatchs", () => {
         (array) => (concatArrays = concatArrays.concat(array))
       );
       // console.log(getPlayerMovements.value);
-      console.log(new BotPlayer(getPlayerMovements.value, "cross").move());
+
+      changeCharState(getCharState.value === "circle" ? "cross" : "circle");
+
+      if (getCharState.value === "cross") {
+        console.log(getCharState.value);
+        const bot = new BotPlayer(getPlayerMovements.value, "cross").move();
+        if (bot) {
+          console.log(bot[0], bot[1]);
+          makeMove("cross", bot[0], bot[1]);
+        }
+      }
+
+      console.log("zmiana");
 
       circles = giveOnlyIndexesSelectedCharacter("circle", concatArrays);
       crosses = giveOnlyIndexesSelectedCharacter("cross", concatArrays);
