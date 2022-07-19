@@ -94,6 +94,7 @@ export default defineComponent({
     ]);
 
     const concatArrays = computed(() => {
+      //wyniesc tą funkcje i tą samą z watchs gdzes by skróćć zapis
       let concatArrays: CharType[] = [];
 
       getPlayerMovements.value.forEach(
