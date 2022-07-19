@@ -1,23 +1,13 @@
 <template>
   <div>
-    <div v-if="!getResult" class="container">
-      <whose-turn />
-      <the-board-game />
-    </div>
-    <the-result />
+    <the-game />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 
-import { storeToRefs } from "pinia";
-import { useGlobalWatchs } from "./stores/GlobalWatchs";
-import { useResaltsStore } from "./stores/ResaltsStore";
-
-import TheBoardGame from "./components/TheBoardGame.vue";
-import WhoseTurn from "./components/WhoseTurn.vue";
-import TheResult from "./components/results/TheResult.vue";
+import TheGame from "./components/TheGame.vue";
 
 import "@/styles/GlobalStyles.css";
 import "@/styles/ResultsStyles.css";
@@ -25,16 +15,7 @@ import "@/styles/ResultsStyles.css";
 export default defineComponent({
   name: "App",
   components: {
-    TheBoardGame,
-    WhoseTurn,
-    TheResult,
-  },
-  setup() {
-    useGlobalWatchs();
-
-    const { getResult } = storeToRefs(useResaltsStore());
-
-    return { getResult };
+    TheGame,
   },
 });
 </script>
