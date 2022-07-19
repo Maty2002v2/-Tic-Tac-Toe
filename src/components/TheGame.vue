@@ -19,9 +19,6 @@ import TheBoardGame from "./TheBoardGame.vue";
 import WhoseTurn from "./WhoseTurn.vue";
 import TheResult from "./results/TheResult.vue";
 
-import "@/styles/GlobalStyles.css";
-import "@/styles/ResultsStyles.css";
-
 export default defineComponent({
   name: "TheGame",
   components: {
