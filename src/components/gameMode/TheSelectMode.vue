@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div :class="classObject">
+  <div :class="classObjectContainer">
+    <div :class="classObjectSelectMode">
       <h2 class="selectMode__h2">Select a game mode</h2>
       <retro-button
         class="selectMode__retroButton"
@@ -33,11 +33,16 @@ export default defineComponent({
 
     let modeChanged = ref(false);
 
-    const classObject = computed(() => ({
+    const classObjectSelectMode = computed(() => ({
       selectMode: true,
       animate__animated: true,
       animate__zoomIn: !modeChanged.value,
       animate__zoomOut: modeChanged.value,
+    }));
+
+    const classObjectContainer = computed(() => ({
+      container: true,
+      "container--low-z-index": modeChanged.value,
     }));
 
     function setGameMode(value: GameModeType) {
@@ -46,7 +51,7 @@ export default defineComponent({
       });
     }
 
-    return { classObject, setGameMode };
+    return { classObjectSelectMode, classObjectContainer, setGameMode };
   },
 });
 </script>
@@ -61,6 +66,10 @@ export default defineComponent({
   justify-content: center;
 
   transform: translate(-50%, -50%);
+}
+
+.container--low-z-index {
+  z-index: -99999;
 }
 
 .selectMode {
@@ -114,10 +123,6 @@ export default defineComponent({
   z-index: -1;
   transition: all 0.3s linear;
 }
-
-/* .selectMode__button:hover {
-  transform: translate(-20%, -20%);
-} */
 
 .selectMode__button:hover::after {
   transform: translateY(15%);
