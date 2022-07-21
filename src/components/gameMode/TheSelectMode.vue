@@ -4,12 +4,12 @@
       <h2 class="selectMode__h2">Select a game mode</h2>
       <retro-button
         class="selectMode__retroButton"
-        @click="setGameMode('two players')"
+        @click="changeModeName('two players')"
         >1vs1</retro-button
       >
       <retro-button
         class="selectMode__retroButton"
-        @click="setGameMode('with bot')"
+        @click="changeModeName('with bot')"
         >Play with bot</retro-button
       >
     </div>
@@ -19,39 +19,31 @@
 <script lang="ts">
 import { defineComponent, ref, computed } from "vue";
 
+import { storeToRefs } from "pinia";
 import { useGameModeStore } from "../../stores/GameModeStore";
 
 import RetroButton from "../RetroButton.vue";
-
-import GameModeType from "../../types/GameModeType";
 
 export default defineComponent({
   name: "TheSelectMode",
   components: { RetroButton },
   setup() {
+    const { modeName } = storeToRefs(useGameModeStore());
     const { changeModeName } = useGameModeStore();
-
-    let modeChanged = ref(false);
 
     const classObjectSelectMode = computed(() => ({
       selectMode: true,
       animate__animated: true,
-      animate__zoomIn: !modeChanged.value,
-      animate__zoomOut: modeChanged.value,
+      animate__zoomIn: !modeName.value,
+      animate__zoomOut: modeName.value,
     }));
 
     const classObjectContainer = computed(() => ({
       container: true,
-      "container--low-z-index": modeChanged.value,
+      "container--low-z-index": modeName.value,
     }));
 
-    function setGameMode(value: GameModeType) {
-      changeModeName(value).then(() => {
-        modeChanged.value = true;
-      });
-    }
-
-    return { classObjectSelectMode, classObjectContainer, setGameMode };
+    return { classObjectSelectMode, classObjectContainer, changeModeName };
   },
 });
 </script>
