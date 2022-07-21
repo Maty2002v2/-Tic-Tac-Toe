@@ -1,30 +1,64 @@
 <template>
   <div class="container">
-    <div class="selectMode">
+    <div :class="classObject">
       <h2 class="selectMode__h2">Select a game mode</h2>
-      <button class="selectMode__button">1vs1</button
-      ><button class="selectMode__button">Play with bot</button>
+      <retro-button
+        class="selectMode__retroButton"
+        @click="setGameMode('two players')"
+        >1vs1</retro-button
+      >
+      <retro-button
+        class="selectMode__retroButton"
+        @click="setGameMode('with bot')"
+        >Play with bot</retro-button
+      >
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref, computed } from "vue";
+
+import { useGameModeStore } from "../../stores/GameModeStore";
+
+import RetroButton from "../RetroButton.vue";
+
+import GameModeType from "../../types/GameModeType";
 
 export default defineComponent({
   name: "TheSelectMode",
-  components: {},
+  components: { RetroButton },
+  setup() {
+    const { changeModeName } = useGameModeStore();
+
+    let modeChanged = ref(false);
+
+    const classObject = computed(() => ({
+      selectMode: true,
+      animate__animated: true,
+      animate__zoomIn: !modeChanged.value,
+      animate__zoomOut: modeChanged.value,
+    }));
+
+    function setGameMode(value: GameModeType) {
+      changeModeName(value).then(() => {
+        modeChanged.value = true;
+      });
+    }
+
+    return { classObject, setGameMode };
+  },
 });
 </script>
 
 <style scoped>
 .container {
-  display: flex;
-  justify-content: center;
-
   position: absolute;
   top: 40%;
   left: 50%;
+
+  display: flex;
+  justify-content: center;
 
   transform: translate(-50%, -50%);
 }
@@ -32,6 +66,7 @@ export default defineComponent({
 .selectMode {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
   width: 300px;
   height: 150px;
   padding: 5px;
@@ -41,29 +76,41 @@ export default defineComponent({
 }
 
 .selectMode__h2 {
-  text-align: center;
   width: 100%;
+  text-align: center;
+}
+
+.selectMode__retroButton {
+  width: 45%;
 }
 
 .selectMode__button {
-  text-align: center;
   position: relative;
-  background: #000000;
-  color: #ffffff;
-  cursor: pointer;
+
   width: 50%;
   border: 1px solid white;
+
+  color: #ffffff;
+  text-align: center;
+
+  background: #000000;
+
+  cursor: pointer;
   transition: all 0.5s linear;
 }
 
 .selectMode__button::after {
   content: "";
+
   position: absolute;
   top: 0px;
   left: 0px;
+
   width: 100%;
   height: 100%;
+
   background: #ffffff;
+
   z-index: -1;
   transition: all 0.3s linear;
 }
