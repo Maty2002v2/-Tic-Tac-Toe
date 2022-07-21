@@ -11,6 +11,7 @@ import { defineComponent } from "vue";
 // import TheGame from "./components/TheGame.vue";
 import TheSelectMode from "./components/gameMode/TheSelectMode.vue";
 
+import "animate.css";
 import "@/styles/GlobalStyles.css";
 import "@/styles/ResultsStyles.css";
 
