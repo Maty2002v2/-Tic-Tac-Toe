@@ -36,7 +36,7 @@ export const useResaltsStore = defineStore("Resalts", {
       // console.log(this.getPlayerMovements);
     },
     setResult(value: ResultType, winCombination: number[]) {
-      const { setFinish } = useMainStore();
+      const { setFinish, restartGame } = useMainStore();
 
       if (winCombination.length) {
         const spans = document.querySelectorAll("div.boardGame__field > span");
@@ -50,7 +50,17 @@ export const useResaltsStore = defineStore("Resalts", {
 
       setTimeout(() => (this.result = value), 2000);
 
-      setTimeout(() => window.location.reload(), 5000);
+      setTimeout(() => restartGame(), 5000);
+    },
+    resetPlayerMovements() {
+      this.playerMovements = [
+        ["", "", ""],
+        ["", "", ""],
+        ["", "", ""],
+      ];
+    },
+    resetResult() {
+      this.result = "";
     },
   },
 });

@@ -12,10 +12,7 @@ export const useGameModeStore = defineStore("GameMode", {
   },
   actions: {
     changeModeName(value: GameModeType) {
-      return new Promise((resolve) => {
-        this.modeName = value;
-        resolve("");
-      });
+      this.modeName = value;
     },
   },
 });

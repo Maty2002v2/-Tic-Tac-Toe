@@ -3,6 +3,7 @@ import { watch } from "vue";
 import { defineStore, storeToRefs } from "pinia";
 import { useResaltsStore } from "@/stores/ResaltsStore";
 import { useMainStore } from "@/stores/MainStore";
+import { useGameModeStore } from "@/stores/GameModeStore";
 
 import BotPlayer from "@/utils/classes/BotPlayer";
 
@@ -16,6 +17,8 @@ export const useGlobalWatchs = defineStore("GlobalWatchs", () => {
     useResaltsStore()
   );
   const { makeMove, setResult } = useResaltsStore();
+
+  const { modeName } = storeToRefs(useGameModeStore());
 
   watch(
     getPlayerMovements,
@@ -32,12 +35,14 @@ export const useGlobalWatchs = defineStore("GlobalWatchs", () => {
 
       changeCharState(getCharState.value === "circle" ? "cross" : "circle");
 
-      if (getCharState.value === "cross") {
-        console.log(getCharState.value);
-        const bot = new BotPlayer(getPlayerMovements.value, "cross").move();
-        if (bot) {
-          console.log(bot[0], bot[1]);
-          makeMove("cross", bot[0], bot[1]);
+      if (modeName.value === "with bot") {
+        if (getCharState.value === "cross") {
+          console.log(getCharState.value);
+          const bot = new BotPlayer(getPlayerMovements.value, "cross").move();
+          if (bot) {
+            console.log(bot[0], bot[1]);
+            makeMove("cross", bot[0], bot[1]);
+          }
         }
       }
 

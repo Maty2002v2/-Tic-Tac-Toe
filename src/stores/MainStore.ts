@@ -1,4 +1,7 @@
 import { defineStore } from "pinia";
+
+import { useResaltsStore } from "./ResaltsStore";
+
 import CharType from "../types/CharType";
 
 export const useMainStore = defineStore("Main", {
@@ -18,6 +21,14 @@ export const useMainStore = defineStore("Main", {
     },
     setFinish(value: boolean) {
       this.finish = value;
+    },
+    restartGame() {
+      const { resetPlayerMovements, resetResult } = useResaltsStore();
+
+      this.changeCharState("");
+      this.setFinish(false);
+      resetPlayerMovements();
+      resetResult();
     },
   },
 });
