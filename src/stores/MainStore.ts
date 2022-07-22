@@ -25,7 +25,7 @@ export const useMainStore = defineStore("Main", {
     restartGame() {
       const { resetPlayerMovements, resetResult } = useResaltsStore();
 
-      this.changeCharState("");
+      this.changeCharState("cross");
       this.setFinish(false);
       resetPlayerMovements();
       resetResult();

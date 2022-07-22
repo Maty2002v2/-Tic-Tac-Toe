@@ -34,19 +34,20 @@ export const useGlobalWatchs = defineStore("GlobalWatchs", () => {
       // console.log(getPlayerMovements.value);
 
       changeCharState(getCharState.value === "circle" ? "cross" : "circle");
+      console.log("elo", getCharState.value);
 
       if (modeName.value === "with bot") {
         if (getCharState.value === "cross") {
-          console.log(getCharState.value);
+          // console.log(getCharState.value);
           const bot = new BotPlayer(getPlayerMovements.value, "cross").move();
           if (bot) {
-            console.log(bot[0], bot[1]);
+            // console.log(bot[0], bot[1]);
             makeMove("cross", bot[0], bot[1]);
           }
         }
       }
 
-      console.log("zmiana");
+      // console.log("zmiana");
 
       circles = giveOnlyIndexesSelectedCharacter("circle", concatArrays);
       crosses = giveOnlyIndexesSelectedCharacter("cross", concatArrays);

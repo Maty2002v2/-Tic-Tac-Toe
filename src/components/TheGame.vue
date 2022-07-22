@@ -1,8 +1,9 @@
 <template>
   <div>
-    <div v-if="!getResult" class="container">
+    <div v-if="!getResult" class="game">
       <whose-turn v-if="showWhoseTurn" />
       <the-board-game />
+      <the-change-mode />
     </div>
     <the-result />
   </div>
@@ -19,6 +20,7 @@ import { useGameModeStore } from "../stores/GameModeStore";
 import TheBoardGame from "./TheBoardGame.vue";
 import WhoseTurn from "./WhoseTurn.vue";
 import TheResult from "./results/TheResult.vue";
+import TheChangeMode from "./gameMode/TheChangeMode.vue";
 
 export default defineComponent({
   name: "TheGame",
@@ -26,6 +28,7 @@ export default defineComponent({
     TheBoardGame,
     WhoseTurn,
     TheResult,
+    TheChangeMode,
   },
   setup() {
     useGlobalWatchs();
@@ -41,7 +44,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.container {
+.game {
   margin: 0 10px;
 }
 </style>

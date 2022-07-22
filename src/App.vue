@@ -31,9 +31,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped>
-.container {
-  margin: 0 10px;
-}
-</style>
