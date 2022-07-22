@@ -4,12 +4,12 @@
       <h2 class="selectMode__h2">Select a game mode</h2>
       <retro-button
         class="selectMode__retroButton"
-        @click="changeGameMode('two players')"
+        @mousedown="changeGameMode('two players')"
         >1vs1</retro-button
       >
       <retro-button
         class="selectMode__retroButton"
-        @click="changeGameMode('with bot')"
+        @mousedown="changeGameMode('with bot')"
         >Play with bot</retro-button
       >
     </div>
@@ -50,6 +50,7 @@ export default defineComponent({
 
     function changeGameMode(value: GameModeType) {
       restartGame();
+      console.log("Zmiana w select");
       changeModeName(value);
     }
 

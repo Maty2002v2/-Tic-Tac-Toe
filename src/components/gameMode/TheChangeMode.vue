@@ -9,6 +9,7 @@ import { defineComponent, onMounted } from "vue";
 import { useGameModeStore } from "../../stores/GameModeStore";
 
 export default defineComponent({
+  //TODO: Zabespieczyc by nie mozna bylo zmienac w okienku kiedy ktos wygral i jest animacja
   name: "TheChangeMode",
   setup() {
     const { changeModeName } = useGameModeStore();

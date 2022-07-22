@@ -11,7 +11,6 @@ import CharType from "@/types/CharType";
 
 export const useGlobalWatchs = defineStore("GlobalWatchs", () => {
   const { getCharState } = storeToRefs(useMainStore());
-  const { changeCharState } = useMainStore();
 
   const { getCombinationsWon, getPlayerMovements } = storeToRefs(
     useResaltsStore()
@@ -31,23 +30,15 @@ export const useGlobalWatchs = defineStore("GlobalWatchs", () => {
       getPlayerMovements.value.forEach(
         (array) => (concatArrays = concatArrays.concat(array))
       );
-      // console.log(getPlayerMovements.value);
-
-      changeCharState(getCharState.value === "circle" ? "cross" : "circle");
-      console.log("elo", getCharState.value);
 
       if (modeName.value === "with bot") {
         if (getCharState.value === "cross") {
-          // console.log(getCharState.value);
           const bot = new BotPlayer(getPlayerMovements.value, "cross").move();
           if (bot) {
-            // console.log(bot[0], bot[1]);
-            makeMove("cross", bot[0], bot[1]);
+            setTimeout(() => makeMove("cross", bot[0], bot[1]), 1000);
           }
         }
       }
-
-      // console.log("zmiana");
 
       circles = giveOnlyIndexesSelectedCharacter("circle", concatArrays);
       crosses = giveOnlyIndexesSelectedCharacter("cross", concatArrays);

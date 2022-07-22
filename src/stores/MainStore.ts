@@ -24,10 +24,9 @@ export const useMainStore = defineStore("Main", {
     },
     restartGame() {
       const { resetPlayerMovements, resetResult } = useResaltsStore();
-
-      this.changeCharState("cross");
-      this.setFinish(false);
+      this.changeCharState("circle");
       resetPlayerMovements();
+      this.setFinish(false);
       resetResult();
     },
   },

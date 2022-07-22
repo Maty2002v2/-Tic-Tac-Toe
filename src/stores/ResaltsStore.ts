@@ -1,4 +1,4 @@
-import { defineStore } from "pinia";
+import { defineStore, storeToRefs } from "pinia";
 import { useMainStore } from "./MainStore";
 
 import CharType from "../types/CharType";
@@ -32,8 +32,11 @@ export const useResaltsStore = defineStore("Resalts", {
   },
   actions: {
     makeMove(value: CharType, row: number, column: number) {
+      const { getCharState } = storeToRefs(useMainStore());
+      const { changeCharState } = useMainStore();
+
       this.playerMovements[row][column] = value;
-      // console.log(this.getPlayerMovements);
+      changeCharState(getCharState.value === "circle" ? "cross" : "circle");
     },
     setResult(value: ResultType, winCombination: number[]) {
       const { setFinish, restartGame } = useMainStore();
