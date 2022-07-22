@@ -9,11 +9,13 @@ export const useMainStore = defineStore("Main", {
     return {
       charState: "circle" as CharType,
       finish: false,
+      botMovement: false,
     };
   },
   getters: {
     getCharState: (state): CharType => state.charState,
     getFinish: (state): boolean => state.finish,
+    getBotMovement: (state): boolean => state.botMovement,
   },
   actions: {
     changeCharState(value: CharType) {
@@ -21,6 +23,9 @@ export const useMainStore = defineStore("Main", {
     },
     setFinish(value: boolean) {
       this.finish = value;
+    },
+    changeBotMovement(value: boolean) {
+      this.botMovement = value;
     },
     restartGame() {
       const { resetPlayerMovements, resetResult } = useResaltsStore();

@@ -11,6 +11,7 @@ import CharType from "@/types/CharType";
 
 export const useGlobalWatchs = defineStore("GlobalWatchs", () => {
   const { getCharState } = storeToRefs(useMainStore());
+  const { changeBotMovement } = useMainStore();
 
   const { getCombinationsWon, getPlayerMovements } = storeToRefs(
     useResaltsStore()
@@ -35,7 +36,13 @@ export const useGlobalWatchs = defineStore("GlobalWatchs", () => {
         if (getCharState.value === "cross") {
           const bot = new BotPlayer(getPlayerMovements.value, "cross").move();
           if (bot) {
-            setTimeout(() => makeMove("cross", bot[0], bot[1]), 1000);
+            changeBotMovement(true);
+            new Promise((resolve) =>
+              setTimeout(() => {
+                makeMove("cross", bot[0], bot[1]);
+                resolve("");
+              }, 1000)
+            ).then(() => changeBotMovement(false));
           }
         }
       }

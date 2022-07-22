@@ -27,13 +27,19 @@ export default defineComponent({
   setup(props) {
     let char = ref<CharType>("");
 
-    const { getCharState, getFinish } = storeToRefs(useMainStore());
+    const { getCharState, getFinish, getBotMovement } = storeToRefs(
+      useMainStore()
+    );
     // const { changeCharState } = useMainStore();
 
     const { makeMove } = useResaltsStore();
 
     function selectField(element: HTMLElement): void {
-      if (props.whetherFieldIsFree === "" && !getFinish.value) {
+      if (
+        props.whetherFieldIsFree === "" &&
+        !getFinish.value &&
+        !getBotMovement.value
+      ) {
         // console.log(char.value, "----------------------------");
         char.value = getCharState.value;
 
