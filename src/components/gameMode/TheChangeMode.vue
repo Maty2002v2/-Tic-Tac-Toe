@@ -6,17 +6,21 @@
 
 <script lang="ts">
 import { defineComponent, onMounted } from "vue";
+
+import { storeToRefs } from "pinia";
 import { useGameModeStore } from "../../stores/GameModeStore";
+import { useMainStore } from "../../stores/MainStore";
 
 export default defineComponent({
-  //TODO: Zabespieczyc by nie mozna bylo zmienac w okienku kiedy ktos wygral i jest animacja
   name: "TheChangeMode",
   setup() {
     const { changeModeName } = useGameModeStore();
 
+    const { getFinish } = storeToRefs(useMainStore());
+
     onMounted(() => {
       document.addEventListener("keyup", (e) => {
-        if (e.code == "Space") {
+        if (e.code == "Space" && !getFinish.value) {
           changeModeName("");
         }
       });
