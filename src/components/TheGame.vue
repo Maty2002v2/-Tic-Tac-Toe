@@ -19,7 +19,7 @@ import { useGameModeStore } from "../stores/GameModeStore";
 
 import TheBoardGame from "./TheBoardGame.vue";
 import WhoseTurn from "./WhoseTurn.vue";
-import TheResult from "./results/TheResult.vue";
+import TheResult from "./TheResult.vue";
 import TheChangeMode from "./gameMode/TheChangeMode.vue";
 
 export default defineComponent({
