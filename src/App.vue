@@ -16,7 +16,6 @@ import TheSelectMode from "./components/gameMode/TheSelectMode.vue";
 
 import "animate.css";
 import "@/styles/GlobalStyles.css";
-import "@/styles/ResultsStyles.css";
 
 export default defineComponent({
   name: "App",
