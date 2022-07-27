@@ -3,15 +3,17 @@
     <div :class="classObjectSelectMode">
       <h2 class="selectMode__h2">Select a game mode</h2>
       <retro-button
+        title="1 vs 1"
         class="selectMode__retroButton"
         @mousedown="changeGameMode('two players')"
-        >1vs1</retro-button
-      >
+        ><i class="demo-icon icon-user"></i>vs<i class="demo-icon icon-user"></i
+      ></retro-button>
       <retro-button
+        title="Play with bot"
         class="selectMode__retroButton"
         @mousedown="changeGameMode('with bot')"
-        >Play with bot</retro-button
-      >
+        ><i class="demo-icon icon-user"></i>vs <i class="icon-smiley"></i
+      ></retro-button>
     </div>
   </div>
 </template>
@@ -50,7 +52,7 @@ export default defineComponent({
 
     function changeGameMode(value: GameModeType) {
       restartGame();
-      console.log("Zmiana w select");
+      // console.log("Zmiana w select");
       changeModeName(value);
     }
 

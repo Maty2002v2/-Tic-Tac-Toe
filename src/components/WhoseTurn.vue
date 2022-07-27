@@ -23,7 +23,9 @@ export default defineComponent({
           return `Currently: ${getCharState.value}`;
         case "with bot":
           return `Currently: ${
-            getCharState.value === "cross" ? "<i>bot</i>" : "<i>ty</i>"
+            getCharState.value === "cross"
+              ? "<i class='demo icon-smiley'></i>"
+              : "<i class='demo-icon icon-user'></i>"
           }`;
       }
     }
