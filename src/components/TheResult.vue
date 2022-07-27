@@ -7,12 +7,12 @@
     <div class="result--tie" v-show="getResult === 'tie'">
       <span></span><span></span><span></span>
     </div>
-    <p class="resultTitle" v-show="getResult">Win {{ getResult }}</p>
+    <p class="resultTitle" v-show="getResult">{{ resultText }}</p>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, computed } from "vue";
 
 import { storeToRefs } from "pinia";
 import { useResaltsStore } from "../stores/ResaltsStore";
@@ -22,7 +22,11 @@ export default defineComponent({
   setup() {
     const { getResult } = storeToRefs(useResaltsStore());
 
-    return { getResult };
+    const resultText = computed(() => {
+      return getResult.value === "tie" ? "Tie" : `Win ${getResult.value}`;
+    });
+
+    return { getResult, resultText };
   },
 });
 </script>

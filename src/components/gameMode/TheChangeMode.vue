@@ -53,7 +53,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-@keyframes example {
+@keyframes MoveKbd {
   from {
     box-shadow: 1px 0 1px 0 #eee, 0 2px 0 0px #ccc, 0 2px 0 1px #444;
     transform: translateY(5px);
@@ -94,6 +94,6 @@ export default defineComponent({
 }
 
 .content__kbd--press {
-  animation: example 0.5s ease-in-out;
+  animation: MoveKbd 0.5s ease-in-out;
 }
 </style>

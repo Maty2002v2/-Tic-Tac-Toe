@@ -43,7 +43,7 @@ export default defineComponent({
 
 <style scoped>
 .v-enter-active {
-  transition: opacity 0.7s ease;
+  transition: opacity 0.5s ease;
 }
 
 .v-enter-from {
