@@ -25,10 +25,10 @@ class BotPlayer {
     // console.log("1. Wygraj - sprawdzam");
     const result = this.winOrBlock(this.board, this.myChar);
     if (!result) {
-      console.log("Przechodzę dalej");
+      // console.log("Przechodzę dalej");
       return null;
     } else {
-      console.log(`Wygrywam stawiając kółko na (${result})`);
+      // console.log(`Wygrywam stawiając kółko na (${result})`);
       return result;
     }
   }
@@ -37,10 +37,10 @@ class BotPlayer {
     // console.log("2. Zablokuj - sprawdzam");
     const result = this.winOrBlock(this.board, this.opponentChar);
     if (!result) {
-      console.log("Przechodzę dalej");
+      // console.log("Przechodzę dalej");
       return null;
     } else {
-      console.log(`Blokuję stawiając kółko na (${result})`);
+      // console.log(`Blokuję stawiając kółko na (${result})`);
       return result;
     }
   }
@@ -49,10 +49,10 @@ class BotPlayer {
     // console.log("3. Zrób rozgałęzienie - sprawdzam");
     const result = this.checkFork(this.board, this.myChar);
     if (!result) {
-      console.log("Przechodzę dalej", result);
+      // console.log("Przechodzę dalej", result);
       return null;
     } else {
-      console.log(`Robię rozgałęzienie stawiając kółko na (${result})`);
+      // console.log(`Robię rozgałęzienie stawiając kółko na (${result})`);
       return result;
     }
   }
@@ -60,27 +60,27 @@ class BotPlayer {
   blockFork(): number[] | null {
     // console.log("4. Zrób blokujące rozgałęzienie - sprawdzam");
     const result = this.checkFork(this.board, this.opponentChar);
-    console.log(result ? "tak" : "nie", result);
+    // console.log(result ? "tak" : "nie", result);
     if (!result) {
-      console.log("Przechodzę dalej");
+      // console.log("Przechodzę dalej");
       return null;
     }
     console.log(`Wolny punkt przecięcia na (${result}), sprawdzam dalej`);
     // sprawdźmy czy mozemy zmusić przeciwnika do blokowania
     const twoInARowResult = this.checkTwoInARow(this.board, this.myChar);
     if (twoInARowResult) {
-      console.log(
-        `Zmuszam do blokady, stawiając na (${result})`,
-        twoInARowResult
-      );
+      // console.log(
+      //   `Zmuszam do blokady, stawiając na (${result})`,
+      //   twoInARowResult
+      // );
       //   return twoInARowResult;
       return result;
     }
     // jezeli nie, to zwracamy miejsce przecięcia aby zablokować przeciwnika
-    console.log(
-      "Blokuję rozgałęzienie stawiając na punkcie przecięcia",
-      result
-    );
+    // console.log(
+    //   "Blokuję rozgałęzienie stawiając na punkcie przecięcia",
+    //   result
+    // );
     return result;
   }
 
@@ -89,10 +89,10 @@ class BotPlayer {
     const result = !this.board[1][1] ? [1, 1] : null;
 
     if (result) {
-      console.log("Gram na środku");
+      // console.log("Gram na środku");
       return [1, 1];
     } else {
-      console.log("Przechodzę dalej");
+      // console.log("Przechodzę dalej");
       return null;
     }
   }
@@ -112,10 +112,10 @@ class BotPlayer {
     }
 
     if (result) {
-      console.log(`Gram na przeciwnym narożniku (${result})`);
+      // console.log(`Gram na przeciwnym narożniku (${result})`);
       return result;
     } else {
-      console.log("Przechodzę dalej");
+      // console.log("Przechodzę dalej");
       return null;
     }
   }
@@ -135,10 +135,10 @@ class BotPlayer {
     }
 
     if (result) {
-      console.log(`Gram na pustym narożniku (${result})`);
+      // console.log(`Gram na pustym narożniku (${result})`);
       return result;
     } else {
-      console.log("Przechodzę dalej");
+      // console.log("Przechodzę dalej");
       return null;
     }
   }
@@ -160,11 +160,11 @@ class BotPlayer {
     }
 
     if (result) {
-      console.log(`Gram pusty bok (${result})`);
+      // console.log(`Gram pusty bok (${result})`);
       return result;
     } else {
       // błędna sytuacja, nie powinna się zdarzyć
-      console.log("Brak ruchu!");
+      // console.log("Brak ruchu!");
       return null;
     }
   }
