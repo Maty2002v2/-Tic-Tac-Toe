@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="!getResult" class="game">
-      <whose-turn v-if="showWhoseTurn" />
+      <whose-turn />
       <the-board-game />
       <the-change-mode />
     </div>
@@ -10,12 +10,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent } from "vue";
 
 import { storeToRefs } from "pinia";
 import { useGlobalWatchs } from "../stores/GlobalWatchs";
 import { useResaltsStore } from "../stores/ResaltsStore";
-import { useGameModeStore } from "../stores/GameModeStore";
 
 import TheBoardGame from "./TheBoardGame.vue";
 import WhoseTurn from "./WhoseTurn.vue";
@@ -34,11 +33,8 @@ export default defineComponent({
     useGlobalWatchs();
 
     const { getResult } = storeToRefs(useResaltsStore());
-    const { getModeName } = storeToRefs(useGameModeStore());
 
-    const showWhoseTurn = computed(() => getModeName.value === "two players");
-
-    return { getResult, showWhoseTurn };
+    return { getResult };
   },
 });
 </script>
