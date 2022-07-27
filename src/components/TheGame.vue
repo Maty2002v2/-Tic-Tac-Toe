@@ -1,10 +1,12 @@
 <template>
   <div>
-    <div v-if="!getResult" class="game">
-      <whose-turn />
-      <the-board-game />
-      <the-change-mode />
-    </div>
+    <transition>
+      <div v-if="!getResult" class="game">
+        <whose-turn />
+        <the-board-game />
+        <the-change-mode />
+      </div>
+    </transition>
     <the-result />
   </div>
 </template>
@@ -40,6 +42,14 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.v-enter-active {
+  transition: opacity 0.7s ease;
+}
+
+.v-enter-from {
+  opacity: 0;
+}
+
 .game {
   margin: 0 10px;
 }
