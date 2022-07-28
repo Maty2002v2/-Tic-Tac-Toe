@@ -28,7 +28,6 @@ export default defineComponent({
     const { getCharState, getFinish, getBotMovement } = storeToRefs(
       useMainStore()
     );
-    // const { changeCharState } = useMainStore();
 
     const { makeMove } = useResaltsStore();
 
@@ -38,7 +37,6 @@ export default defineComponent({
         !getFinish.value &&
         !getBotMovement.value
       ) {
-        // console.log(char.value, "----------------------------");
         char.value = getCharState.value;
 
         makeMove(
@@ -46,8 +44,6 @@ export default defineComponent({
           parseInt(element.dataset.row!) - 1,
           parseInt(element.dataset.column!) - 1
         );
-
-        // changeCharState(getCharState.value === "circle" ? "cross" : "circle");
 
         element.classList.remove("boardGame__field--cursorPointer");
       }

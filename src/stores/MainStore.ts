@@ -29,6 +29,7 @@ export const useMainStore = defineStore("Main", {
     },
     restartGame() {
       const { resetPlayerMovements, resetResult } = useResaltsStore();
+
       this.changeCharState("circle");
       resetPlayerMovements();
       this.setFinish(false);

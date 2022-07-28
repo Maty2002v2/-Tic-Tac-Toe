@@ -52,7 +52,6 @@ export default defineComponent({
 
     function changeGameMode(value: GameModeType) {
       restartGame();
-      // console.log("Zmiana w select");
       changeModeName(value);
     }
 
