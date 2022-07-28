@@ -20,7 +20,11 @@ export default defineComponent({
     function whoseTurn() {
       switch (getModeName.value) {
         case "two players":
-          return `Currently: ${getCharState.value}`;
+          return `Currently: ${
+            getCharState.value === "cross"
+              ? "<i class='demo icon-cancel-1'></i>"
+              : "<i class='demo-icon icon-circle-empty'></i>"
+          }`;
         case "with bot":
           return `Currently: ${
             getCharState.value === "cross"

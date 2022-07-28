@@ -1,8 +1,6 @@
 <template>
   <div @click="selectField($event.target)">
-    <span v-show="whetherFieldIsFree">
-      {{ char === "circle" ? "O" : "X" }}
-    </span>
+    <span v-show="whetherFieldIsFree" v-html="insertChar()"> </span>
   </div>
 </template>
 
@@ -55,7 +53,15 @@ export default defineComponent({
       }
     }
 
-    return { char, selectField };
+    function insertChar() {
+      if (char.value === "circle") {
+        return "<i class='demo-icon icon-circle-empty'></i>";
+      } else {
+        return "<i class='demo icon-cancel-1'></i>";
+      }
+    }
+
+    return { char, selectField, insertChar };
   },
 });
 </script>
