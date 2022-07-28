@@ -33,16 +33,22 @@
 
 ## Stosowanie
 
-**Widok planszy** To właśnie widzi osoba wchodząca pierwszy raz.
+**Wybór trybu gry** To właśnie widzi osoba wchodząca na strone. Po wyborze rozpoczyna gre a okno znika. Można je spokojnie przywrócić naciskając spację lub klikając na tekst. .
 
 <div style="margin-bottom: 60px; text-align: center">
-  <img src="./src/assets/GeneralView.png" width="800">
+  <img src="./src/assets/ChangeMOdeView.png" width="800">
 </div>
 
 **Wygrana** Jeśli padnie którakolwiek z zwycięskich kombinacji.
 
 <div style="margin-bottom: 60px; text-align: center">
   <img src="./src/assets/WinView.png" width="800">
+</div>
+
+**Gra z botem** Bot szuka swoich okazji by nas pokonać.
+
+<div style="margin-bottom: 60px; text-align: center">
+  <img src="./src/assets/GameWithBotView.png" width="800">
 </div>
 
 **Końcowa animacja** Zależnie od wyniku zobaczymy odpowiednią animację.
@@ -61,7 +67,7 @@ Aby sklonować i uruchomić tę aplikację, potrzebujesz [Git](https://git-scm.c
 
 ```bash
 # Klonowanie repozytorium
-$ git clone https://github.com/Maty2002v2/guess-the-word.git
+$ git clone https://github.com/Maty2002v2/-Tic-Tac-Toe.git
 
 #Wejdź do folderu repozytorium
 $ cd -Tic-Tac-Toe
