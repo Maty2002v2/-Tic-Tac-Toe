@@ -36,7 +36,7 @@
 **Wybór trybu gry** To właśnie widzi osoba wchodząca na strone. Po wyborze rozpoczyna gre a okno znika. Można je spokojnie przywrócić naciskając spację lub klikając na tekst. .
 
 <div style="margin-bottom: 60px; text-align: center">
-  <img src="./src/assets/ChangeMOdeView.png" width="800">
+  <img src="./src/assets/ChangeModeView.png" width="800">
 </div>
 
 **Wygrana** Jeśli padnie którakolwiek z zwycięskich kombinacji.
