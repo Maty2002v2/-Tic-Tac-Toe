@@ -7,7 +7,9 @@
     <div class="result--tie" v-show="getResult === 'tie'">
       <span></span><span></span><span></span>
     </div>
-    <p class="resultTitle" v-show="getResult">{{ resultText }}</p>
+    <transition>
+      <p class="resultTitle" v-show="getResult.length">{{ resultText }}</p>
+    </transition>
   </div>
 </template>
 
@@ -246,5 +248,13 @@ export default defineComponent({
   left: 50%;
   font-size: 30px;
   transform: translate(-50%, -50%);
+}
+
+.v-enter-active {
+  transition: opacity 4s ease;
+}
+
+.v-enter-from {
+  opacity: 0;
 }
 </style>
